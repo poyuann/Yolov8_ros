@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 import cv2
@@ -50,7 +50,7 @@ class Yolo_Dect:
             pub_topic,  BoundingBoxes, queue_size=1)
 
         self.image_pub = rospy.Publisher(
-            '/yolov8/detection_image',  Image, queue_size=1)
+            'yolov8/detection_image',  Image, queue_size=1)
 
         # if no image messages
         while (not self.getImageStatus):
@@ -93,8 +93,8 @@ class Yolo_Dect:
         self.position_pub.publish(self.boundingBoxes)
         self.publish_image(self.frame, height, width)
 
-        if self.visualize :
-            cv2.imshow('YOLOv8', self.frame)
+        # if self.visualize :
+        #     cv2.imshow('YOLOv8', self.frame)
 
     def publish_image(self, imgdata, height, width):
         image_temp = Image()
